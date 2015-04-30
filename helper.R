@@ -1,4 +1,4 @@
-pow <- function (x,y) return (x ^ y)
+Pow <- function (x,y) return (x ^ y)
 
 ns <- function (n) {
 

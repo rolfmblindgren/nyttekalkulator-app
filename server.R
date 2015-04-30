@@ -1,4 +1,3 @@
-
 # This is the server logic for a Shiny web application.
 # You can find out more about building applications with Shiny here:
 #
@@ -6,6 +5,8 @@
 #
 
 library(shiny)
+library(plyr)
+options(scipen=999)
 
 shinyServer(function(input, output) {
   
@@ -38,7 +39,7 @@ shinyServer(function(input, output) {
                     ns(input$stillinger/input$søkere)
 
         paste(
-            "<h4>Nytten blir ", nytte, " kroner for hvert år kandidaten er i stillingen.</h4>
+            "<h4>Nytten blir ", round_any(nytte,1000), " kroner for hvert år kandidaten er i stillingen.</h4>
 <br>
 <p>
 Det denne kalkulatoren gjør er å regne ut hvilken sannsynlig inntjening man vil få ved å bruke en gitt seleksjonsmetode når man velger mellom flere søkere til en stilling. Poenget er at alle søkerne  vil generere inntekt, men noen vil generere mer inntekt enn andre. Det beste er naturligvis å finne den søkeren som vil tjene inn mest. Siden ingen seleksjonsmetoder er helt nøyaktig vil man aldri treffe den hver gang, men jo bedre metoden er, jo mer sannsynlig er det at man i det minste vil treffe en av de beste. 
@@ -69,5 +70,5 @@ Matematikken som ligger til grunn for disse formlene ble først utviklet av Brog
 ")
     
     })
-  
+    
 })
