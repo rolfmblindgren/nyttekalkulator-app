@@ -9,7 +9,10 @@ library(shiny)
 source("helper.R")
 
 shinyUI(fluidPage(
-  
+
+    includeCSS("www/styles.css"),
+
+    
   # Application title
   titlePanel("Nyttekalkulator"),
   
