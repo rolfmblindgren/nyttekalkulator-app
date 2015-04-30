@@ -53,14 +53,13 @@ shinyUI(fluidPage(
       
       numericInput(inputId = "årslønn", 
                    label = "Hva er årslønna?",
-                   value=300000, min = NA, max = NA, step = NA)
-      
+                   value=300000, min = NA, max = NA, step = NA)      
     ),
     
     
     # Show a plot of the generated distribution
     mainPanel(
-      htmlOutput("value")
+      htmlOutput("result")
     )
   )
 ))

@@ -9,14 +9,16 @@ library(shiny)
 
 shinyServer(function(input, output) {
   
-    output$value <- renderText({ 
     
+        
+    output$result <- renderText({ 
+
         stillingstype <- switch(input$stillingstype, 
-                                "Funksjonær" = 0.4,
-                                "Fagspesialist" = 0.5,
-                                "Mellomleder" = 0.7,
-                                "Toppleder" = 1.0,
-                                "Aksjemegler"   = 2.0)
+                            "Funksjonær" = 0.4,
+                            "Fagspesialist" = 0.5,
+                            "Mellomleder" = 0.7,
+                            "Toppleder" = 1.0,
+                            "Aksjemegler"   = 2.0)
 
         validitet <- switch(input$validitet,
                             "Assessment Center" = 0.6,
@@ -30,15 +32,14 @@ shinyServer(function(input, output) {
                             "Astrologi" = 0.0,
                             "Grafologi" = 0.0)
 
-        paste("<p>Nytten blir ",
-              input$årslønn *
-                  validitet *
-                      stillingstype *
-                          ns(input$stillinger/input$søkere),
+        nytte <- input$årslønn *
+            validitet *
+                stillingstype *
+                    ns(input$stillinger/input$søkere)
 
-              "kroner for hvert år kandidaten er i stillingen.</p>","
-
-
+        paste(
+            "<h1>Nytten blir ", nytte, " kroner for hvert år kandidaten er i stillingen.</h4>
+<br>
 <p>
 Det denne kalkulatoren gjør er å regne ut hvilken sannsynlig inntjening man vil få ved å bruke en gitt seleksjonsmetode når man velger mellom flere søkere til en stilling. Poenget er at alle søkerne  vil generere inntekt, men noen vil generere mer inntekt enn andre. Det beste er naturligvis å finne den søkeren som vil tjene inn mest. Siden ingen seleksjonsmetoder er helt nøyaktig vil man aldri treffe den hver gang, men jo bedre metoden er, jo mer sannsynlig er det at man i det minste vil treffe en av de beste. 
 </p>
