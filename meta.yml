@@ -1,0 +1,13 @@
+title: "Nyttekalkulator"
+description: "En pedagogisk kalkulator for nytte av ulike seleksjonsmetoder."
+url: "https://shiny.grendel.no/nyttekalkulator-app/"
+image: "https://shiny.grendel.no/nyttekalkulator-app/og.png"
+image_alt: "Nyttekalkulator med kort forklaring og illustrasjon"
+site_name: "Grendel"
+locale: "nb_NO"
+image_width: 1200
+image_height: 630
+image_type: "image/png"
+twitter_site: "@GrendelEP"
+twitter_creator: "@GrendelEP"
+twitter_image_alt: "Nyttekalkulator med kort forklaring og illustrasjon"

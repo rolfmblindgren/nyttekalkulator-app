@@ -6,11 +6,13 @@
 #
 
 library(shiny)
+library(shinyseo)
 source("helper.R")
 
 shinyUI(fluidPage(
 
     includeCSS("www/styles.css"),
+    social_meta("meta.yml"),
 
     
   # Application title
