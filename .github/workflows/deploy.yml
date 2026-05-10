@@ -24,6 +24,14 @@ jobs:
         run: |
           ssh deployshiny@dnsgrendel.grendel.no "mkdir -p /srv/shiny-server/nyttekalkulator-app"
 
+      - name: Sikre eierskap før synk
+        run: |
+          ssh deployshiny@dnsgrendel.grendel.no "\
+          sudo chown -R deployshiny:shinyapps /srv/shiny-server/nyttekalkulator-app && \
+          sudo find /srv/shiny-server/nyttekalkulator-app -type d -exec chmod 775 {} \; && \
+          sudo find /srv/shiny-server/nyttekalkulator-app -type f -exec chmod 664 {} \; \
+          "
+
       - name: Synkroniser appfiler til server
         run: |
           rsync -avz --delete \
@@ -33,6 +41,14 @@ jobs:
             ./meta.yml \
             ./www/ \
             deployshiny@dnsgrendel.grendel.no:/srv/shiny-server/nyttekalkulator-app/
+
+      - name: Sett eierskap etter synk
+        run: |
+          ssh deployshiny@dnsgrendel.grendel.no "\
+          sudo chown -R deployshiny:shinyapps /srv/shiny-server/nyttekalkulator-app && \
+          sudo find /srv/shiny-server/nyttekalkulator-app -type d -exec chmod 775 {} \; && \
+          sudo find /srv/shiny-server/nyttekalkulator-app -type f -exec chmod 664 {} \; \
+          "
 
       - name: Restart Shiny Server
         run: |
