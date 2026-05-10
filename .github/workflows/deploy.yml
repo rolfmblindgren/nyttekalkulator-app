@@ -1,0 +1,39 @@
+name: deploy-nyttekalkulator
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sjekk ut kode
+        uses: actions/checkout@v4
+
+      - name: Sett opp SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SHINY_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H dnsgrendel.grendel.no >> ~/.ssh/known_hosts
+
+      - name: Lag målmappe
+        run: |
+          ssh deployshiny@dnsgrendel.grendel.no "mkdir -p /srv/shiny-server/nyttekalkulator-app"
+
+      - name: Synkroniser appfiler til server
+        run: |
+          rsync -avz --delete \
+            ./server.R \
+            ./ui.R \
+            ./helper.R \
+            ./meta.yml \
+            ./www/ \
+            deployshiny@dnsgrendel.grendel.no:/srv/shiny-server/nyttekalkulator-app/
+
+      - name: Restart Shiny Server
+        run: |
+          ssh deployshiny@dnsgrendel.grendel.no "sudo systemctl restart shiny-server"
