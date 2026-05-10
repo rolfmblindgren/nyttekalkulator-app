@@ -130,11 +130,11 @@ p {
 
 .hero-logo {
   display: block;
-  width: 66px;
+  width: 42px;
   max-width: none;
   height: auto;
-  margin-left: -5px;
-  margin-top: -2px;
+  margin-left: -3px;
+  margin-top: 2px;
   object-fit: contain;
   filter: none;
 }
