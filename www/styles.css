@@ -108,7 +108,7 @@ p {
 
 .hero-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   margin-bottom: 16px;
   flex-wrap: wrap;
@@ -116,24 +116,25 @@ p {
 
 .hero-mark {
   flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 14px;
   background: rgba(245, 252, 250, 0.94);
   border: 1px solid rgba(118, 233, 217, 0.18);
   box-shadow: 0 10px 30px rgba(2, 11, 10, 0.16);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
 .hero-logo {
   display: block;
-  width: 76px;
+  width: 66px;
   max-width: none;
   height: auto;
-  margin-left: -6px;
+  margin-left: -5px;
+  margin-top: -2px;
   object-fit: contain;
   filter: none;
 }
@@ -141,7 +142,8 @@ p {
 .hero-heading {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  padding-top: 1px;
 }
 
 .hero-copy::after {
@@ -493,8 +495,8 @@ p {
   }
 
   .hero-logo {
-    width: 70px;
-    margin-left: -5px;
+    width: 60px;
+    margin-left: -4px;
   }
 }
 
