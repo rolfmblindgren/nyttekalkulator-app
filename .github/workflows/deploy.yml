@@ -39,7 +39,7 @@ jobs:
             ./ui.R \
             ./helper.R \
             ./meta.yml \
-            ./www/ \
+            ./www \
             deployshiny@dnsgrendel.grendel.no:/srv/shiny-server/nyttekalkulator-app/
 
       - name: Sett eierskap etter synk
