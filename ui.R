@@ -18,7 +18,8 @@ shinyUI(fluidPage(
             src = "https://www.grendel.no/wp-content/uploads/sites/7/2021/02/Grendel-G.png.webp",
             alt = "Grendel-logo",
             class = "hero-logo"
-          )
+          ),
+          span(class = "hero-brand-label", "Grendel")
         ),
         span(class = "eyebrow", "Pedagogisk kalkulator"),
         h1("Nyttekalkulator"),
