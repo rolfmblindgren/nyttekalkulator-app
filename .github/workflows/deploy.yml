@@ -2,16 +2,15 @@ name: deploy-nyttekalkulator
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main", "master"]
   workflow_dispatch:
 
 env:
+  APP_NAME: ${{ github.event.repository.name }}
   DEPLOY_HOST: ${{ vars.DEPLOY_HOST || 'dnsgrendel.grendel.no' }}
   DEPLOY_USER: ${{ vars.DEPLOY_USER || 'deployshiny' }}
-  DEPLOY_PATH: ${{ vars.DEPLOY_PATH || format('/srv/shiny-server/{0}', github.event.repository.name) }}
   DEPLOY_GROUP: ${{ vars.DEPLOY_GROUP || 'shinyapps' }}
   SHINY_SERVICE: ${{ vars.SHINY_SERVICE || 'shiny-server' }}
-  DEPLOY_PATHS: ${{ vars.DEPLOY_PATHS || 'server.R ui.R helper.R meta.yml www' }}
 
 jobs:
   deploy:
@@ -19,13 +18,12 @@ jobs:
 
     steps:
       - name: Sjekk ut kode
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Sjekk deploy-variabler
         run: |
           : "${DEPLOY_HOST:?Set repository variable DEPLOY_HOST or use the default}"
           : "${DEPLOY_USER:?Set repository variable DEPLOY_USER or use the default}"
-          : "${DEPLOY_PATH:?Set repository variable DEPLOY_PATH or use the default}"
           : "${SHINY_SERVICE:?Set repository variable SHINY_SERVICE or use the default}"
 
       - name: Sett opp SSH
@@ -35,36 +33,25 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "${DEPLOY_HOST}" >> ~/.ssh/known_hosts
 
-      - name: Lag målmappe
+      - name: Sørg for at appmappa finnes
         run: |
-          ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "mkdir -p '${DEPLOY_PATH}'"
-
-      - name: Sikre eierskap før synk
-        run: |
-          ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "\
-          sudo chown -R ${DEPLOY_USER}:${DEPLOY_GROUP} '${DEPLOY_PATH}' && \
-          sudo find '${DEPLOY_PATH}' -type d -exec chmod 775 {} \; && \
-          sudo find '${DEPLOY_PATH}' -type f -exec chmod 664 {} \; \
-          "
+          ssh "${DEPLOY_USER}@${DEPLOY_HOST}" \
+            "mkdir -p /srv/shiny-server/${APP_NAME}"
 
       - name: Synkroniser appfiler til server
         run: |
-          set -euo pipefail
-          rsync_paths=()
-          for path in $DEPLOY_PATHS; do
-            rsync_paths+=( "./$path" )
-          done
           rsync -avz --delete \
-            "${rsync_paths[@]}" \
-            "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
-
-      - name: Sett eierskap etter synk
-        run: |
-          ssh "${DEPLOY_USER}@${DEPLOY_HOST}" "\
-          sudo chown -R ${DEPLOY_USER}:${DEPLOY_GROUP} '${DEPLOY_PATH}' && \
-          sudo find '${DEPLOY_PATH}' -type d -exec chmod 775 {} \; && \
-          sudo find '${DEPLOY_PATH}' -type f -exec chmod 664 {} \; \
-          "
+            --mkpath \
+            ./ \
+            --chown=${DEPLOY_USER}:${DEPLOY_GROUP} \
+            --chmod=D775,F664 \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.gitignore' \
+            --exclude '.Rproj.user' \
+            --exclude '.Rhistory' \
+            --exclude '.RData' \
+            ${DEPLOY_USER}@${DEPLOY_HOST}:/srv/shiny-server/${APP_NAME}/
 
       - name: Restart Shiny Server
         run: |
