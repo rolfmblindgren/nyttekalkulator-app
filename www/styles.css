@@ -106,6 +106,21 @@ p {
   padding: 28px;
 }
 
+.hero-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 14px;
+}
+
+.hero-logo {
+  display: block;
+  width: 112px;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 22px rgba(2, 11, 10, 0.35));
+}
+
 .hero-copy::after {
   content: "";
   position: absolute;
@@ -448,6 +463,10 @@ p {
 
   h1 {
     font-size: clamp(2.2rem, 10vw, 3.4rem);
+  }
+
+  .hero-logo {
+    width: 96px;
   }
 }
 
