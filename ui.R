@@ -13,16 +13,21 @@ shinyUI(fluidPage(
       div(
         class = "hero-copy",
         div(
-          class = "hero-brand",
-          tags$img(
-            src = "https://www.grendel.no/wp-content/uploads/sites/7/2021/02/Grendel-G.png.webp",
-            alt = "Grendel-logo",
-            class = "hero-logo"
+          class = "hero-header",
+          div(
+            class = "hero-mark",
+            tags$img(
+              src = "https://www.grendel.no/wp-content/uploads/sites/7/2021/02/Grendel-G.png.webp",
+              alt = "Grendel-logo",
+              class = "hero-logo"
+            )
           ),
-          span(class = "hero-brand-label", "Grendel")
+          div(
+            class = "hero-heading",
+            span(class = "eyebrow", "Pedagogisk kalkulator"),
+            h1("Nyttekalkulator")
+          )
         ),
-        span(class = "eyebrow", "Pedagogisk kalkulator"),
-        h1("Nyttekalkulator"),
         p(
           class = "hero-text",
           "Se hvordan stillingstype, metode og konkurransen om jobben påvirker den forventede nytten av et valg."
