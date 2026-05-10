@@ -146,6 +146,43 @@ shinyUI(fluidPage(
               p("Kalkulatoren er pedagogisk. Den skal gjøre sammenhengen lett å forstå, ikke erstatte faglig skjønn.")
             )
           )
+        ),
+        div(
+          class = "panel panel-source",
+          h2("Kilder og bakgrunn"),
+          p(
+            class = "source-text",
+            "Vil du se den faglige bakgrunnen? Kalkulatoren bygger på klassisk nytteanalyse i arbeids- og organisasjonspsykologi."
+          ),
+          tags$details(
+            class = "source-details",
+            tags$summary("Vis den lengre forklaringen"),
+            div(
+              class = "source-details-body",
+              p(
+                class = "source-text",
+                "Den enkle modellen i appen viser hvordan verdi av stillingen, kvaliteten på metoden og hvor selektiv rekrutteringen er, spiller sammen. Poenget er å gjøre sammenhengen lett å se, ikke å late som om dette er et fullstendig beslutningsverktøy."
+              ),
+              p(
+                class = "source-text",
+                "Tallene i appen er valgt for å gjøre dette tydelig i praksis. Det betyr at appen er pedagogisk, men den er ikke tatt ut av luften: den er laget for å illustrere formelverket som brukes i litteraturen."
+              ),
+              div(
+                class = "source-box",
+                tags$strong("Hovedkilder"),
+                tags$ul(
+                  class = "source-list",
+                  tags$li("Mabon & Hunter (2002), Arbeidspsykologisk Testning, Stockholm: Psykologförlaget."),
+                  tags$li("Schmidt, Hunter, Outerbridge & Trattner (1986), klassisk arbeid om validitet og nytteanalyse."),
+                  tags$li("Klassiske modeller for utility analysis og selection ratio i personellutvelgelse.")
+                )
+              ),
+              p(
+                class = "source-note",
+                "Hvis du vil forstå hvert tall i modellen, er dette et godt sted å begynne."
+              )
+            )
+          )
         )
       )
     )
