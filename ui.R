@@ -58,10 +58,7 @@ shinyUI(fluidPage(
         div(
           class = "sidebar-card",
           h2("Velg verdiene"),
-          p(
-            class = "panel-copy",
-            "Start med standardverdiene. Endre ett felt om gangen for å se hva som flytter resultatet."
-          ),
+          p("Start med standardverdiene. Endre ett felt om gangen for å se hva som flytter resultatet."),
           selectInput(
             inputId = "stillingstype",
             label = "Hvilken type stilling ser du på?",
@@ -127,16 +124,16 @@ shinyUI(fluidPage(
       column(
         width = 8,
         div(
-          class = "panel panel-result",
+          class = "main-card",
           div(
             class = "section-head",
-            span(class = "section-kicker", "Resultat"),
+            span(class = "eyebrow", "Resultat"),
             h2("Forventet nytte")
           ),
           uiOutput("result")
         ),
         div(
-          class = "panel panel-explain",
+          class = "main-card",
           h2("Slik leser du tallet"),
           div(
             class = "explain-grid",
@@ -163,7 +160,7 @@ shinyUI(fluidPage(
           )
         ),
         div(
-          class = "panel panel-source",
+          class = "main-card",
           h2("Kilder og bakgrunn"),
           p(
             class = "source-text",

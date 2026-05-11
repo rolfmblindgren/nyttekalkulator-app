@@ -16,7 +16,7 @@ format_pct <- function(value) {
 stat_card <- function(label, value, hint) {
   tags$div(
     class = "stat-card",
-    tags$div(class = "stat-label", label),
+    tags$div(class = "eyebrow", label),
     tags$div(class = "stat-value", value),
     tags$div(class = "stat-hint", hint)
   )
@@ -54,7 +54,7 @@ shinyServer(function(input, output) {
       class = "result-stack",
       tags$div(
         class = "result-metric",
-        tags$div(class = "result-label", "Forventet nytte"),
+        tags$div(class = "eyebrow", "Forventet nytte"),
         tags$div(class = "result-value", format_kroner(nytte)),
         tags$div(class = "result-unit", "per år kandidaten er i stillingen")
       ),
