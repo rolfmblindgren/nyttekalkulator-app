@@ -3,6 +3,7 @@ library(shinyseo)
 source("helper.R")
 
 shinyUI(fluidPage(
+  grendelshiny::grendelshiny_css(),
   includeCSS("www/styles.css"),
   social_meta("meta.yml"),
 
