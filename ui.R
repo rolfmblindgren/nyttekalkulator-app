@@ -56,7 +56,7 @@ shinyUI(fluidPage(
       column(
         width = 4,
         div(
-          class = "panel panel-form",
+          class = "sidebar-card",
           h2("Velg verdiene"),
           p(
             class = "panel-copy",
