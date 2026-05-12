@@ -4,6 +4,7 @@ source("helper.R")
 
 shinyUI(fluidPage(
   grendelshiny::grendelshiny_css(),
+  grendelshiny::grendelshiny_js(),
   includeCSS("www/styles.css"),
   social_meta("meta.yml"),
 
