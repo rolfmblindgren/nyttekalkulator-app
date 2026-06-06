@@ -1,13 +1,34 @@
 title: "Nyttekalkulator"
-description: "En pedagogisk kalkulator for nytte av ulike seleksjonsmetoder."
-url: "https://shiny.grendel.no/nyttekalkulator-app/"
+description: "En pedagogisk kalkulator for nytte av ulike seleksjonsmetoder i rekruttering."
+url: "https://shiny.grendel.no/nyttekalkulator-app"
 image: "https://shiny.grendel.no/nyttekalkulator-app/og.png"
 image_alt: "Nyttekalkulator med kort forklaring og illustrasjon"
-site_name: "Grendel"
-locale: "nb_NO"
 image_width: 1200
 image_height: 630
 image_type: "image/png"
+site_name: "Grendel"
+locale: "nb_NO"
+
+favicon: "/nyttekalkulator-app/favicon.svg"
+favicon_type: "image/svg+xml"
+theme_color: "#0f5c51"
+
+schema_type: "WebApplication"
+application_category: "BusinessApplication"
+operating_system: "Any"
+is_accessible_for_free: true
+
+author_name: "Grendel evidensbasert psykologi AS"
+author_type: "Organization"
+publisher_name: "Grendel evidensbasert psykologi AS"
+publisher_type: "Organization"
+
+twitter_card: "summary_large_image"
 twitter_site: "@GrendelEP"
 twitter_creator: "@GrendelEP"
 twitter_image_alt: "Nyttekalkulator med kort forklaring og illustrasjon"
+bing_site_verification: "FC104B5963EC28F7C5766C79E6AEBE9D"
+
+# Local Variables:
+# mode: yaml
+# End:

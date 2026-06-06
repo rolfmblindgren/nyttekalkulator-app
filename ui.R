@@ -1,12 +1,14 @@
 library(shiny)
-library(shinyseo)
+library(yaml)
 source("helper.R")
+
+app_meta <- yaml::read_yaml("meta.yml")
 
 shinyUI(fluidPage(
   grendelshiny::grendelshiny_css(),
   grendelshiny::grendelshiny_js(),
   includeCSS("www/styles.css"),
-  social_meta("meta.yml"),
+  shinyseo::social_meta(app_meta),
 
   div(
     class = "app-shell",
