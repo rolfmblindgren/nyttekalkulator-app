@@ -1,11 +1,11 @@
 title: "Nyttekalkulator"
 description: "En pedagogisk kalkulator for nytte av ulike seleksjonsmetoder i rekruttering."
 url: "https://shiny.grendel.no/nyttekalkulator-app"
-image: "https://shiny.grendel.no/nyttekalkulator-app/og.png"
+image: "https://shiny.grendel.no/nyttekalkulator-app/og.svg"
 image_alt: "Nyttekalkulator med kort forklaring og illustrasjon"
 image_width: 1200
 image_height: 630
-image_type: "image/png"
+image_type: "image/svg+xml"
 site_name: "Grendel"
 locale: "nb_NO"
 
