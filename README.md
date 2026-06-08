@@ -7,7 +7,7 @@
 
 En liten pedagogisk Shiny-app som beregner nytten av ulike seleksjonsmetoder i rekruttering.
 
-![Nyttekalkulator preview](www/og.png)
+![Nyttekalkulator preview](www/og.svg)
 
 ## Hva appen gjør
 
@@ -73,7 +73,7 @@ Repoet bruker `shinyseo` for sosial metadata i `meta.yml`, inkludert:
 - Open Graph-bilde
 - Twitter metadata
 
-Delingsbildet ligger i `og.png`.
+Delingsbildet ligger i `www/og.svg`.
 
 ## Kort om prosjektet
 
