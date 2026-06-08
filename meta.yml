@@ -11,6 +11,7 @@ locale: "nb_NO"
 
 favicon: "/nyttekalkulator-app/favicon.svg"
 favicon_type: "image/svg+xml"
+favicon_png: "/nyttekalkulator-app/favicon-32.png"
 theme_color: "#0f5c51"
 
 schema_type: "WebApplication"
